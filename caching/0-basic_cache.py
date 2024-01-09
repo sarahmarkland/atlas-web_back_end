@@ -2,7 +2,9 @@
 ''' Basic dictionary '''
 from base_caching import BaseCaching
 
+
 class BasicCache(BaseCaching):
+    ''' limitless caching system '''
     def __init__(self):
         super().__init__()
 
