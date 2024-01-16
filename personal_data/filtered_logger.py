@@ -14,6 +14,7 @@ def filter_datum(fields: typing.List[str], redaction: str, message: str,
                          field + "=" + redaction + separator, message)
     return message
 
+
 class RedactingFormatter(logging.Formatter):
     """ Redacting Formatter class """
 
@@ -21,7 +22,7 @@ class RedactingFormatter(logging.Formatter):
     FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
     SEPARATOR = ";"
 
-    def __init__(self, fields:typing.List[str] = None):
+    def __init__(self, fields: typing.List[str] = None):
         """
         Initialize the RedactingFormatter.
 
