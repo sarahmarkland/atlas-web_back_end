@@ -4,7 +4,7 @@ from api.v1.auth.auth import Auth
 
 
 class BasicAuth(Auth):
-    """Basic auth class"""
-        def __init__(self):
-            """Constructor"""
-            pass
+"""Basic auth class"""
+    def __init__(self):
+        """Constructor"""
+        pass
