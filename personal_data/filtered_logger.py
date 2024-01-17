@@ -76,5 +76,23 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     return connector
 
 
+def main():
+    """main function"""
+    logger = get_logger()
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT COUNT(*) FROM users;")
+    for row in cursor:
+        logger.info(row[0])
+    cursor.close()
+    db.close()
+
+
+def hash_password(password: str) -> str:
+    """returns a salted, hashed password, which is a byte string."""
+    import bcrypt
+    return bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+
+
 if __name__ == "__main__":
-    get_logger()
+    main()
