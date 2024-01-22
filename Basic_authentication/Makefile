@@ -6,7 +6,7 @@
 
 NAME="Sarah Markland"
 IMAGE=sarahmarkland/basic_authentication
-CONTAINER=project_container
+CONTAINER=atlas_project_container
 TAG=latest
 
 # Builds a docker image for a development box with a image name, can change dev to project name
