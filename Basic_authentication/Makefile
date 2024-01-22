@@ -4,8 +4,8 @@
 
 # All commands start with make
 
-NAME="Rob Farley"
-IMAGE=nomadrob/basic_auth
+NAME="Sarah Markland"
+IMAGE=sarahmarkland/basic_authentication
 CONTAINER=project_container
 TAG=latest
 
