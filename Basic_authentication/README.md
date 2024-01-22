@@ -1,3 +1,31 @@
+# General
+## What authentication means
+- Basic Authentication provides a simple yet effective way to control access to your API by requiring users to authenticate with a username and password for each request.
+## What Base64 is
+- Base64 is a binary-to-text encoding scheme that is commonly used to encode binary data, such as images, audio files, or any binary content, into a plain text format. This encoding allows data to be transmitted in a text format that is safe for use in text-based protocols, such as email or HTTP, without the risk of data corruption.
+## How to encode a string in Base64
+- Encoding a string in Base64 involves converting the characters of the string into their corresponding ASCII values and then encoding those values in Base64 format. Most programming languages provide built-in functions or libraries to easily perform Base64 encoding. Here are examples in Python and JavaScript:
+
+Python:
+In Python, you can use the base64 module to encode a string in Base64.
+
+```
+import base64
+
+# String to be encoded
+original_string = "Hello, World!"
+
+# Encode the string in Base64
+encoded_bytes = base64.b64encode(original_string.encode('utf-8'))
+
+# Convert the bytes to a string (optional)
+encoded_string = encoded_bytes.decode('utf-8')
+
+print(encoded_string)
+```
+## What Basic authentication means
+## How to send the Authorization header
+
 # Simple API
 
 Simple HTTP API for playing with `User` model.
