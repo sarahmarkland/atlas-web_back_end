@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """DB module"""
 from sqlalchemy import create_engine
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 
 from user import Base
 from user import User
-
 
 
 class DB:
@@ -27,7 +27,7 @@ class DB:
             DBSession = sessionmaker(bind=self._engine)
             self.__session = DBSession()
         return self.__session
-    
+
     def add_user(self, email: str, hashed_password: str) -> User:
         """Method that saves a new user to the database"""
         new_user = User(email=email, hashed_password=hashed_password)
