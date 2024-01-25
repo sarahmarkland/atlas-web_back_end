@@ -10,7 +10,7 @@ class Auth:
     """ Auth class to interact with the authentication database. """
     def __init__(self):
         self._db = DB()
-    
+
     def register_user(self, email: str, password: str) -> User:
         """ Method that takes in an email string and a password string
             as arguments and returns a User object """
@@ -19,6 +19,7 @@ class Auth:
             raise ValueError(f'User {email} already exists')
         except NoResultFound:
             return self._db.add_user(email, _hash_password(password))
+
 
 def _hash_password(password: str) -> bytes:
     """ Method that takes in a string password argument and returns bytes """
