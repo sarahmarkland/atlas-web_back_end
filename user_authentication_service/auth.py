@@ -31,11 +31,12 @@ class Auth:
         except NoResultFound:
             return False
 
-    def _generate_uuid(self) -> str:
-        """ Method that returns a string representation of a new UUID """
-        return str(uuid.uuid4())
-
 
 def _hash_password(password: str) -> bytes:
     """ Method that takes in a string password argument and returns bytes """
     return bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+
+
+def _generate_uuid(self) -> str:
+    """ Method that returns a string representation of a new UUID """
+    return str(uuid.uuid4())
