@@ -2,7 +2,7 @@
 """ unit test for utils.access_nested_map """
 import unittest
 from unittest.mock import patch, Mock
-from utils import access_nested_map, get_json
+from utils import access_nested_map, get_json, memoize
 from parameterized import parameterized
 
 
@@ -29,6 +29,7 @@ class TestAccessNestedMap(unittest.TestCase):
             access_nested_map(nested_map, path)
             self.assertEqual(str(context.exception), expected_exception_message)
 
+
 class TestGetJson(unittest.TestCase):
     """class for testing get_json function """
     @patch('utils.requests.get')
@@ -53,6 +54,21 @@ class TestGetJson(unittest.TestCase):
         result_2 = get_json(test_url_2)
         mock_get.assert_called_once_with(test_url_2)
         self.assertEqual(result_2, test_payload_2)
+
+
+class TestMemoize(unittest.TestCase):
+    """ memoization should store the results of expensive func calls """
+    def test_memoize(self):
+        """ idk """
+        
+        class TestClass:
+            """ need documentation? """
+            def a_method(self):
+                return 42
+
+            @memoize
+            def a_property(self):
+                return self.a_method()
 
 if __name__ == '__main__':
     unittest.main()
