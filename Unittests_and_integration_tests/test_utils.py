@@ -27,14 +27,16 @@ class TestAccessNestedMap(unittest.TestCase):
         """ test that error is raised for given inputs """
         with self.assertRaises(KeyError) as context:
             access_nested_map(nested_map, path)
-            self.assertEqual(str(context.exception), expected_exception_message)
+            self.assertEqual(str(context.exception),
+                             expected_exception_message)
 
 
 class TestGetJson(unittest.TestCase):
     """class for testing get_json function """
     @patch('utils.requests.get')
     def test_get_json(self, mock_get):
-        """ method for testing HTTP calls without actual external HTTP calls """
+        """ method for testing HTTP calls without actual external HTTP
+        calls """
         test_url_1 = "http://example.com"
         test_payload_1 = {"payload": True}
         mock_get.return_value = Mock()
@@ -60,7 +62,6 @@ class TestMemoize(unittest.TestCase):
     """ memoization should store the results of expensive func calls """
     def test_memoize(self):
         """ idk """
-        
         class TestClass:
             """ need documentation? """
             def a_method(self):
@@ -69,6 +70,7 @@ class TestMemoize(unittest.TestCase):
             @memoize
             def a_property(self):
                 return self.a_method()
+
 
 if __name__ == '__main__':
     unittest.main()
