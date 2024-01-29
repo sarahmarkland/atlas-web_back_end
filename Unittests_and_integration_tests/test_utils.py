@@ -43,9 +43,8 @@ class TestGetJson(unittest.TestCase):
         mock_get.assert_called_once_with(test_url_1)
         self.assertEqual(result_1, test_payload_1)
 
-    @patch('utils.requests.get')
-    def test_get_json_another_url(self, mock_get):
-        """ method 2 for testy HTTP calls """
+        mock_get.reset_mock()
+
         test_url_2 = "http://holberton.io"
         test_payload_2 = {"payload": False}
         mock_get.return_value = Mock()
