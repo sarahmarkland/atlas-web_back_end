@@ -51,6 +51,32 @@ class TestGithubOrgClient(unittest.TestCase):
             expected_result = ["google", "abc"]
             self.assertEqual(result, expected_result)
 
+    def test_has_license(self):
+        """ method to test has license """
+        repo = {"license": {"key": "my_license"}}
+        self.assertTrue(GithubOrgClient.has_license(repo, "my_license"))
+        self.assertFalse(GithubOrgClient.has_license(repo, "other_license"))
+
+
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """ class to test integration of GithubOrgClient """
+    @classmethod
+    def setUpClass(cls):
+        """ class method to set up """
+        cls.get_patcher = patch('requests.get', side_effect=HTTPError)
+        cls.get_patcher.start()
+
+    @classmethod
+    def tearDownClass(cls):
+        """ class method to tear down """
+        cls.get_patcher.stop()
+
+    def test_public_repos(self):
+        """ method to test public repos """
+        with self.assertRaises(HTTPError):
+            GithubOrgClient("google").public_repos()
+        self.assertRaises(HTTPError)
+
 
 if __name__ == '__main__':
     unittest.main()
