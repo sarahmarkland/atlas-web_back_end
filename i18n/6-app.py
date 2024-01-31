@@ -11,6 +11,7 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+
 def get_user():
     """ method to get user """
     userID = request.args.get('login_as')
@@ -25,8 +26,10 @@ class Config(object):
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
+
 app = Flask(__name__)
 babel = Babel(app)
+
 
 @babel.localeselector
 def get_locale():
@@ -34,7 +37,7 @@ def get_locale():
     locale = request.args.get('locale')
     if locale and locale in app.config['LANGUAGES']:
         return locale
-    
+
     usr = get_user()
     if usr:
         locale = usr.get('locale')
