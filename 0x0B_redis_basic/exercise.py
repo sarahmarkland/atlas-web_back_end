@@ -45,19 +45,17 @@ class Cache:
         self._redis.set(key, data)
         return key
 
-
-    def get(self, key: str, fn: Union[None, callable] = None) -> Union[str, bytes, int, float]:
+    def get(self, key: str, fn: Union[None, callable] = None) ->\
+            Union[str, bytes, int, float]:
         """ Get data from redis """
         data = self._redis.get(key)
         if fn:
             return fn(data)
         return data
 
-
     def get_str(self, data: bytes) -> str:
         """ Get string """
         return data.decode('utf-8')
-
 
     def get_int(self, data: bytes) -> int:
         """ Get int """
@@ -72,5 +70,7 @@ def replay(method: Callable) -> None:
     outputs = method.__self__._redis.lrange(output, 0, -1)
     calls = zip(inputs, outputs)
     print(f"{method.__qualname__} was called" + f"{len(inputs)} times:")
-    for call in calls:
-        print(f"{method.__qualname__}(*{call[0]}) -> {call[1]}")
+    for input_data, output_data in calls:
+        in_data = input_data.decode('utf-8')
+        out_data = output_data.decode('utf-8')
+        print(f"{method.__qualname__}(*{in_data}) -> {out_data}")
