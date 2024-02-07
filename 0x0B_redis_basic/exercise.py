@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """ writing strings to redis """
-import redis
 import uuid
 from typing import Union
+import redis
 
 
 class Cache:
