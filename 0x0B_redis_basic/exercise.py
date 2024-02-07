@@ -66,11 +66,11 @@ class Cache:
 
 def replay(method: Callable) -> None:
     """ Replay decorator """
-    name = method.__qualname__
-    input = f"{name}:inputs"
-    output = f"{name}:outputs"
-    print(f"{name} was called {method.__self__._redis.get(name)} times:")
+    input = f"{method.__qualname__}:inputs"
+    output = f"{method.__qualname__}:outputs"
     inputs = method.__self__._redis.lrange(input, 0, -1)
     outputs = method.__self__._redis.lrange(output, 0, -1)
-    for i, o in zip(inputs, outputs):
-        print(f"{name}(*{i.decode('utf-8')}) -> {o.decode('utf-8')}")
+    calls = zip(inputs, outputs)
+    print(f"{method.__qualname__} was called" + f"{len(inputs)} times:")
+    for call in calls:
+        print(f"{method.__qualname__}(*{call[0]}) -> {call[1]}")
