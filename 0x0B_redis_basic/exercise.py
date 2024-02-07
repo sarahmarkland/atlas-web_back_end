@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """ writing strings to redis """
 import redis
 
