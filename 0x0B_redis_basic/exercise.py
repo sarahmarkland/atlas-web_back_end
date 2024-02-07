@@ -16,7 +16,7 @@ def count_calls(method):
     return wrapper
 
 
-def call_history(method):
+def call_history(method: Callable) -> Callable:
     """ Call history decorator """
     @wraps(method)
     def wrapper(self, *args, **kwargs):
