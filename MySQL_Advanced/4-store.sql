@@ -12,7 +12,7 @@ BEGIN
     SELECT NEW.item_id, NEW.quantity INTO item_id, order_quantity;
 
     UPDATE items
-    SET quantity = quantity - order_quantity
+    SET quantity = quantity - NEW.amount
     WHERE id = item_id;
 END;
 //
