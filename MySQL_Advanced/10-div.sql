@@ -1,10 +1,12 @@
 -- function that divides the first argument by the second argument
 -- or returns 0 if the second argument is 0
+DROP FUNCTION IF EXISTS SafeDiv;
+
 DELIMITER //
-CREATE FUNCTION SafeDiv(a INT, b INT)
-RETURNS INT
+CREATE FUNCTION SafeDiv(a FLOAT, b FLOAT)
+RETURNS FLOAT
 BEGIN
-    DECLARE result INT;
+    DECLARE result FLOAT;
 
     IF b = 0 THEN
         SET result = 0;
