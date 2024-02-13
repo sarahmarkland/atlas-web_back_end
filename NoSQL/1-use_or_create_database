@@ -1,0 +1,2 @@
+// create or use the database "my_db" in mongod
+use my_db
