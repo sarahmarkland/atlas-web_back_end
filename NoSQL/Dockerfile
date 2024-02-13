@@ -37,10 +37,8 @@ RUN pip3 install pymongo
 RUN mkdir -p /data/db
 
 # Add your custom MongoDB init script
-# ADD init.d-mongod /etc/init.d/mongod
-# RUN chmod u+x /etc/init.d/mongod
-# Start MongoDB in the background and keep the container running
-CMD mongod --fork --logpath /var/log/mongodb.log && tail -f /dev/null
+ADD init.d-mongod /etc/init.d/mongod
+RUN chmod u+x /etc/init.d/mongod
 
 # Run indefinitely
 CMD ["tail", "-f", "/dev/null"]
