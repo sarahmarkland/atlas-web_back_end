@@ -1,4 +1,2 @@
-#!/bin/bash
-
-# Run the mongo shell with the command to list databases
-mongo --quiet --eval "db.adminCommand('listDatabases')" | grep -oP '"name" : "\K(.*?)(?=")'
+// list all databases in MongoDB using Mongo shell
+show dbs
