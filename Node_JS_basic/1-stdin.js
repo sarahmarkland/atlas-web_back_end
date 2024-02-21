@@ -4,15 +4,15 @@
 // program should display "Your name is: INPUT"
 // program should display "This important software is now closing"
 
-process.stdin.setEncoding('utf8');
-process.stdin.on('readable', () => {
-  const chunk = process.stdin.read();
-  if (chunk !== null) {
-    process.stdout.write(`Welcome to Holberton School, what is your name?\n`);
-    process.stdout.write(`Your name is: ${chunk}`);
-    process.stdout.write(`This important software is now closing\n`);
-  }
-});
-process.stdin.on('end', () => {
-  process.stdout.write('end\n');
-});
+console.log('Welcome to Holberton School, what is your name?');
+
+process.stdin.on('data', (data) => {
+  console.log(`Your name is: ${data.toString().trim()}`);
+  process.exit();
+}
+);
+
+process.on('exit', () => {
+  console.log('This important software is now closing');
+}
+);
