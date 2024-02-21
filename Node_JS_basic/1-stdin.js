@@ -12,7 +12,7 @@ process.stdin.on('data', (data) => {
 }
 );
 
-process.on('exit', () => {
+process.stdin.on('end', () => {
   console.log('This important software is now closing');
 }
 );
