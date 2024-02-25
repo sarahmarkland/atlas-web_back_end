@@ -19,12 +19,17 @@ function countStudents(path) {
       students[field].push(firstName);
     });
     
-    const totalStudents = students.length;
+    let totalStudents = 0;
+
+    Object.values(students).forEach((studentArray) => {
+      totalStudents += studentArray.length;
+    });
+
     console.log(`Number of students: ${totalStudents}`);
 
-    Object.entries(students).forEach(([field, names]) => {
-      console.log(`Number of students in ${field}: ${names.length}. List: ${names.join(', ')}`);
-    });
+    Object.entries(students).forEach(([field, studentArray]) => {
+      console.log(`Number of students in ${field}: ${studentArray.length}. List: ${studentArray.join(', ')}`);
+    }
+    );
 }
-
 module.exports = countStudents;
