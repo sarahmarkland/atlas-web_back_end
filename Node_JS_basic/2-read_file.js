@@ -19,13 +19,12 @@ function countStudents(path) {
       students[field].push(firstName);
     });
     
-    let totalStudents = 0;
+    const totalStudents = students.length;
+    console.log(`Number of students: ${totalStudents}`);
 
-    Object.entries(students).forEach(([field, names]) => {
+    Object.entries(studentsByField).forEach(([field, names]) => {
       console.log(`Number of students in ${field}: ${names.length}. List: ${names.join(', ')}`);
     });
-
-    console.log(`Number of students: ${totalStudents}`);
 }
 
 module.exports = countStudents;
