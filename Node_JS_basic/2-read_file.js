@@ -9,27 +9,26 @@ function countStudents(path) {
   if (!fs.existsSync(path)) {
     throw new Error('Cannot load the database');
   }
-    const data = fs.readFileSync(path, 'utf8');
-    const lines = data.trim().split('\n').slice(1);
-    const students = {};
+  const data = fs.readFileSync(path, 'utf8');
+  const lines = data.trim().split('\n').slice(1);
+  const students = {};
 
-    lines.forEach((studentData) => {
-      const [firstName, , , field] = studentData.split(',');
-      if (!students[field]) students[field] = [];
-      students[field].push(firstName);
-    });
-    
-    let totalStudents = 0;
+  lines.forEach((studentData) => {
+    const [firstName, , , field] = studentData.split(',');
+    if (!students[field]) students[field] = [];
+    students[field].push(firstName);
+  });
 
-    Object.values(students).forEach((studentArray) => {
-      totalStudents += studentArray.length;
-    });
+  let totalStudents = 0;
 
-    console.log(`Number of students: ${totalStudents}`);
+  Object.values(students).forEach((studentArray) => {
+    totalStudents += studentArray.length;
+  });
 
-    Object.entries(students).forEach(([field, studentArray]) => {
-      console.log(`Number of students in ${field}: ${studentArray.length}. List: ${studentArray.join(', ')}`);
-    }
-    );
+  console.log(`Number of students: ${totalStudents}`);
+
+  Object.entries(students).forEach(([field, studentArray]) => {
+    console.log(`Number of students in ${field}: ${studentArray.length}. List: ${studentArray.join(', ')}`);
+  });
 }
 module.exports = countStudents;
