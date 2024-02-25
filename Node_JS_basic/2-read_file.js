@@ -22,7 +22,7 @@ function countStudents(path) {
     const totalStudents = students.length;
     console.log(`Number of students: ${totalStudents}`);
 
-    Object.entries(studentsByField).forEach(([field, names]) => {
+    Object.entries(students).forEach(([field, names]) => {
       console.log(`Number of students in ${field}: ${names.length}. List: ${names.join(', ')}`);
     });
 }
