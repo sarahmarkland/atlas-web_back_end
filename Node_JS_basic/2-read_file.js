@@ -13,18 +13,19 @@ function countStudents(path) {
     const lines = data.trim().split('\n').slice(1);
     const students = {};
 
-    students.forEach((student) => {
-      const [firstName,, , field] = student.split(',');
+    lines.forEach((studentData) => {
+      const [firstName, , , field] = studentData.split(',');
       if (!students[field]) students[field] = [];
       students[field].push(firstName);
-    }
-    );
-    console.log(`Number of students: ${lines.length}`);
+    });
+    
+    let totalStudents = 0;
 
     Object.entries(students).forEach(([field, names]) => {
       console.log(`Number of students in ${field}: ${names.length}. List: ${names.join(', ')}`);
-    }
-    );
+    });
+
+    console.log(`Number of students: ${totalStudents}`);
 }
 
 module.exports = countStudents;
