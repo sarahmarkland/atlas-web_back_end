@@ -11,6 +11,7 @@ const app = http.createServer((req, res) => {
     const databasePath = process.argv[2];
     countStudents(databasePath)
       .then(() => {
+        res.end('This is the list of our students')
       })
       .catch((error) => {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
